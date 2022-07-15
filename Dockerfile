@@ -8,9 +8,9 @@ RUN apk add --no-cache \
     && pip3 install --upgrade pip \
     && pip3 install \
         awscli \
-    && rm -rf /var/cache/apk/* \
+    && rm -rf /var/cache/apk/*
 
-RUN ["bin/sh", "-c", "mkdir -p /src"]
+RUN ["/bin/sh", "-c", "mkdir -p /src"]
 
 COPY ["src", "/src/"]
 
