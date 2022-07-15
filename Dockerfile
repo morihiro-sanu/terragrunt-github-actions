@@ -10,6 +10,8 @@ RUN apk add --no-cache \
         awscli \
     && rm -rf /var/cache/apk/* \
 
+RUN ["bin/sh", "-c", "mkdir -p /src"]
+
 COPY ["src", "/src/"]
 
 ENTRYPOINT ["/src/main.sh"]
