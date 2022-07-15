@@ -139,12 +139,21 @@ function installTerragrunt {
 
   echo "Moving Terragrunt ${tgVersion} to PATH"
   chmod +x /tmp/terragrunt
-  mv /tmp/terragrunt /usr/local/bin/terragrunt 
+  mv /tmp/terragrunt /usr/local/bin/terragrunt
   if [ "${?}" -ne 0 ]; then
     echo "Failed to move Terragrunt ${tgVersion}"
     exit 1
   fi
   echo "Successfully moved Terragrunt ${tgVersion}"
+}
+
+function installAwsCli {
+  echo "Downloading AWS CLI"
+  curl -sLo /tmp/awscliv2.zip https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+  echo "Unzipping AWS CLI"
+  unzip -q /tmp/awscliv2.zip -d /tmp
+  echo "Installing AWS CLI"
+  /tmp/aws/install --update
 }
 
 function main {
@@ -163,6 +172,7 @@ function main {
   parseInputs
   configureCLICredentials
   installTerraform
+  installAwsCli
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
 
   case "${tfSubcommand}" in
