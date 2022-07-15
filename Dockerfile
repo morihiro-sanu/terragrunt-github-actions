@@ -1,6 +1,9 @@
-FROM alpine:3 
+FROM amazon/aws-cli:2.7.16
 
-RUN ["/bin/sh", "-c", "apk add --update --no-cache bash ca-certificates curl git jq openssh"]
+RUN yum update all -y && \
+    yum install git jq openssh -y
+
+RUN ["/bin/sh", "-c", "mkdir -p /src"]
 
 COPY ["src", "/src/"]
 
