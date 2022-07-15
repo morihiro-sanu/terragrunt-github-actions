@@ -147,15 +147,6 @@ function installTerragrunt {
   echo "Successfully moved Terragrunt ${tgVersion}"
 }
 
-function installAwsCli {
-  echo "Downloading AWS CLI"
-  curl -sLo /tmp/awscliv2.zip https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
-  echo "Unzipping AWS CLI"
-  unzip -q /tmp/awscliv2.zip -d /tmp
-  echo "Installing AWS CLI"
-  /tmp/aws/install --update
-}
-
 function main {
   # Source the other files to gain access to their functions
   scriptDir=$(dirname ${0})
@@ -172,7 +163,6 @@ function main {
   parseInputs
   configureCLICredentials
   installTerraform
-  installAwsCli
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
 
   case "${tfSubcommand}" in
