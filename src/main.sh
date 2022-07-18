@@ -167,6 +167,7 @@ function main {
 
   echo "TEST"
   aws sts get-session-token
+  aws secretsmanager get-secret-value --secret-id DEVOPS_GITHUB_REPOS_META_PERSONAL_TOKEN --query 'SecretString' --output json | jq -rc . | jq -r .DEVOPS_GITHUB_REPOS_META_PERSONAL_TOKEN
   echo "TEST"
 
   case "${tfSubcommand}" in
