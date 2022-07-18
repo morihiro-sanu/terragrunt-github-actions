@@ -1,6 +1,6 @@
 # Terragrunt GitHub Actions
 
-Terragrunt GitHub Actions allow you to execute Terragrunt commands within GitHub Actions.
+Terragrunt GitHub Actions allow you to execute Terragrunt commands within GitHub Actions along with AWS CLI command.
 
 The output of the actions can be viewed from the Actions tab in the main repository view. If the actions are executed on a pull request event, a comment may be posted on the pull request.
 
@@ -30,7 +30,7 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@master
       - name: 'Terragrunt Format'
-        uses: the-commons-project/terragrunt-github-actions@master
+        uses: yupvr/terragrunt-github-actions@v2.0.0
         with:
           tf_actions_version: ${{ env.tf_version }}
           tg_actions_version: ${{ env.tg_version }}
@@ -41,7 +41,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terragrunt Init'
-        uses: the-commons-project/terragrunt-github-actions@master
+        uses: yupvr/terragrunt-github-actions@v2.0.0
         with:
           tf_actions_version: ${{ env.tf_version }}
           tg_actions_version: ${{ env.tg_version }}
@@ -51,7 +51,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terragrunt Validate'
-        uses: the-commons-project/terragrunt-github-actions@master
+        uses: yupvr/terragrunt-github-actions@v2.0.0
         with:
           tf_actions_version: ${{ env.tf_version }}
           tg_actions_version: ${{ env.tg_version }}
@@ -62,7 +62,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terragrunt Plan'
-        uses: the-commons-project/terragrunt-github-actions@master
+        uses: yupvr/terragrunt-github-actions@v2.0.0
         with:
           tf_actions_version: ${{ env.tf_version }}
           tg_actions_version: ${{ env.tg_version }}

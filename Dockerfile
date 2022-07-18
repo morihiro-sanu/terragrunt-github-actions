@@ -1,10 +1,9 @@
-FROM amazon/aws-cli:2.7.16
+FROM amazon/aws-cli
 
-RUN yum update all -y && \
-    yum install unzip git jq openssh -y
+RUN yum install unzip git jq openssh -y
 
-RUN ["/bin/sh", "-c", "mkdir -p /src"]
+RUN mkdir -p /src
 
-COPY ["src", "/src/"]
+COPY src /src/
 
 ENTRYPOINT ["/src/main.sh"]
