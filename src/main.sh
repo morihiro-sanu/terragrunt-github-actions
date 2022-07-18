@@ -165,10 +165,6 @@ function main {
   installTerraform
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
 
-  echo "TEST"
-  aws sts get-session-token
-  echo "TEST"
-
   case "${tfSubcommand}" in
     fmt)
       installTerragrunt
