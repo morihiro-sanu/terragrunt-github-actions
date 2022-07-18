@@ -3,13 +3,6 @@
 function terragruntPlan {
   # Gather the output of `terragrunt plan`.
   echo "plan: info: planning Terragrunt configuration in ${tfWorkingDir}"
-
-  echo "TEST"
-  aws sts get-session-token
-  aws secretsmanager get-secret-value --secret-id DEVOPS_GITHUB_REPOS_META_PERSONAL_TOKEN --query 'SecretString' --output json | jq -rc . | jq -r .DEVOPS_GITHUB_REPOS_META_PERSONAL_TOKEN
-  aws s3 ls s3-terraform/devops-repos-meta/github/ajax-systems/repositories/devops-repos-meta/terraform.tfstate
-  echo "TEST"
-
   planOutput=$(${tfBinary} plan -detailed-exitcode -input=false ${*} 2>&1)
   planExitCode=${?}
   planHasChanges=false
