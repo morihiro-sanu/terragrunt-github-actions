@@ -1,7 +1,7 @@
 FROM amazon/aws-cli:2.7.16
 
 RUN yum update all -y && \
-    yum install git jq openssh -y
+    yum install unzip git jq openssh -y
 
 RUN ["/bin/sh", "-c", "mkdir -p /src"]
 
