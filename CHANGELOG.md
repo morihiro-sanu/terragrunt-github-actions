@@ -1,4 +1,7 @@
 # Changelog
+## v0.9.0
+### Changed
+* switched to $GITHUB_OUTPUT: https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
 
 ## v0.8.0
 
